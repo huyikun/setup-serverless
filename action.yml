@@ -1,17 +1,26 @@
-name: 'The name of your action here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'setup-serverless'
+description: 'A custom github action for setting up serverless-devs.'
+author: 'yilun'
 
 # Define your inputs here.
 inputs:
-  milliseconds:
-    description: 'Your input description here'
+  access_alias:
+    description: 'Your access's alias.'
     required: true
-    default: '1000'
+    default: 'default'
+  account_id:
+    description: 'Account id, use "s config get {{access_alias}}" to check.'
+    required: true
+  access_key_id:
+    description: 'Access key_id, use "s config get {{access_alias}}" to check.'
+    required: true
+  access_key_secret:
+    description: 'Access key_secret, use "s config get {{access_alias}}" to check.'
+    required: true
 
 # Define your outputs here.
 outputs:
-  time:
+  res:
     description: 'Your output description here'
 
 runs:

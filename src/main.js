@@ -7,18 +7,12 @@ const { wait } = require('./wait')
  */
 async function run() {
   try {
-    const ms = core.getInput('milliseconds', { required: true })
-
-    // Debug logs are only output if the `ACTIONS_STEP_DEBUG` secret is true
-    core.debug(`Waiting ${ms} milliseconds ...`)
-
-    // Log the current timestamp, wait, then log the new timestamp
-    core.debug(new Date().toTimeString())
-    await wait(parseInt(ms, 10))
-    core.debug(new Date().toTimeString())
-
-    // Set outputs for other workflow steps to use
-    core.setOutput('time', new Date().toTimeString())
+    const access_alias = core.getInput('access_alias', { required: true });
+    const account_id = core.getInput('account_id', { required: true });
+    const access_key_id = core.getInput('access_key_id', { required: true });
+    const access_key_secret = core.getInput('access_key_secret', { required: true });
+    const result = {access_alias, account_id, access_key_id, access_key_secret};
+    core.setOutput('res', result)
   } catch (error) {
     // Fail the workflow run if an error occurs
     core.setFailed(error.message)

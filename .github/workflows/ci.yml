@@ -55,7 +55,10 @@ jobs:
         id: test-action
         uses: ./
         with:
-          milliseconds: 1000
+          account_id: 1
+          access_key_id: 2
+          access_key_secret: 3
+          access: default
 
       - name: Print Output
         id: output
